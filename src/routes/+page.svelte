@@ -1,2 +1,9 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+  import LeafletMap from "$lib/components/LeafletMap.svelte";
+  import Charts from "$lib/components/Charts.svelte";
+</script>
+
+<main>
+  <!-- <LeafletMap /> -->
+  <Charts />
+</main>
