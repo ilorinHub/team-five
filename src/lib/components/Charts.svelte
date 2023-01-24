@@ -3,50 +3,74 @@
   import Chart from "chart.js/auto";
 
   let portfolio;
+  const labels = ["apc", "pdp", "aac", "apga", "ac", "cpc", "ap"];
   const data = {
-    labels: ["Expenses", "Savings", "Investments"],
+    labels: labels,
     datasets: [
       {
         label: "My First Dataset",
-        data: [300, 50, 100],
-        backgroundColor: ["#7000e1", "#fc8800", "#00b0e8"],
-        // hoverOffset: 4,
-        borderWidth: 0,
+        data: [65, 59, 80, 81, 56, 55, 40],
+        backgroundColor: [
+          "rgb(255, 99, 132)",
+          "rgb(255, 159, 64)",
+          "rgb(255, 205, 86)",
+          "rgb(75, 192, 192)",
+          "rgb(54, 162, 235)",
+          "rgb(153, 102, 255)",
+          "rgb(201, 203, 207)",
+        ],
+        borderColor: [
+          "rgb(255, 99, 132)",
+          "rgb(255, 159, 64)",
+          "rgb(255, 205, 86)",
+          "rgb(75, 192, 192)",
+          "rgb(54, 162, 235)",
+          "rgb(153, 102, 255)",
+          "rgb(201, 203, 207)",
+        ],
+        borderWidth: 1,
       },
     ],
   };
+  let chartTypes = ["pie", "bar", "line", "doughnut"];
+  let current_chart_type = 0;
   const config = {
-    type: "doughnut",
+    type: "bar",
     data: data,
     options: {
-      borderRadius: "30",
-      responsive: true,
-      cutout: "95%",
-      spacing: 2,
-      plugins: {
-        legend: {
-          position: "bottom",
-          display: true,
-          labels: {
-            usePointStyle: true,
-            padding: 20,
-            font: {
-              size: 14,
-            },
-          },
-        },
-        title: {
-          display: true,
-          text: "My Personal Portfolio",
+      scales: {
+        y: {
+          beginAtZero: true,
         },
       },
     },
   };
+  function cycleChartTypes() {
+    if (current_chart_type < chartTypes.length) {
+      current_chart_type += 1;
+    } else {
+      current_chart_type = 0;
+    }
+  }
   onMount(() => {
+    // config.data.datasets = [];
+    // data.forEach((d) => {
+    //   config.data.datasets.push({
+    //     label: d.year,
+    //     data: d.count,
+    //   });
+    // });
     const ctx = portfolio.getContext("2d");
     // Initialize chart using default config set
     var myChart = new Chart(ctx, config);
   });
 </script>
 
-<canvas bind:this={portfolio} width={400} height={400} />
+<div class="grid grid-cols-2 h-screen">
+  <div>
+    <canvas bind:this={portfolio} />
+  </div>
+  <div>
+    <button on:click={cycleChartTypes}>switch</button>
+  </div>
+</div>
