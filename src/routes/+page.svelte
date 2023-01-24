@@ -1,9 +1,6 @@
 <script>
-  import LeafletMap from "$lib/components/LeafletMap.svelte";
-  import Charts from "$lib/components/Charts.svelte";
 </script>
 
 <main>
-  <!-- <LeafletMap /> -->
-  <Charts />
+  <h2>Hello</h2>
 </main>
