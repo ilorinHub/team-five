@@ -24,6 +24,7 @@
 	"type": "module",
 	"dependencies": {
 		"chart.js": "^4.2.0",
-		"leaflet": "^1.9.3"
+		"leaflet": "^1.9.3",
+		"leaflet-heatmap": "^1.0.0"
 	}
 }
