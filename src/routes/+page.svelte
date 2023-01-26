@@ -133,87 +133,23 @@
     </div>
     <div class="grid grid-cols-3 gap-8 items-center">
       <div class="col-span-2 space-y-4">
-        <div class="space-y-2">
-          <h3 class="text-opacity-60 text-sm mb-2">Top contenders</h3>
-          <div class="grid grid-cols-2 gap-2">
-            <div class="w-full h-[300px] bg-slate-900" />
-            <div class="w-full h-[300px] bg-slate-900" />
-          </div>
-        </div>
-        <div class="flex justify-between">
-          {#each [1, 2] as _, index}
-            <div class:text-right={_ % 2 == 0}>
-              <div>
-                <h2 class="text-3xl font-medium">
-                  {getPartyCandidate(dataset.results[index].party)?.name}
-                </h2>
-                <p class="text-sm">{dataset.results[index].party}</p>
-                <p class="text-sm">34 States won</p>
-              </div>
-            </div>
-          {/each}
-        </div>
-        <div class="flex">
-          <div
-            class="h-8 bg-green-500"
-            style:width={`${
-              (dataset.results[0].votes /
-                (dataset.results[0].votes + dataset.results[1].votes)) *
-              100
-            }%`}
-          />
-          <div
-            class="h-8 bg-red-500"
-            style:width={`${
-              (dataset.results[1].votes /
-                (dataset.results[0].votes + dataset.results[1].votes)) *
-              100
-            }%`}
-          />
-        </div>
+        <!-- <TopContenders /> -->
       </div>
       <div>
-        <h3 class="text-opacity-60 text-sm mb-2">Current standings</h3>
-        <div>
-          <ul class="flex flex-col gap-2">
-            {#each dataset.results as _}
-              <li class="flex items-center gap-5">
-                <div class="flex items-center gap-2">
-                  <div class="w-14 h-14 rounded-full p-2 bg-slate-900" />
-                  <div>
-                    <h2 class="font-medium">
-                      {getPartyCandidate(_.party)?.name}
-                    </h2>
-                    <p class="text-sm">Party</p>
-                  </div>
-                </div>
-                <p>80%</p>
-                <p>20,122 votes</p>
-              </li>
-            {/each}
-          </ul>
-        </div>
+        <!-- <LeaderBoard /> -->
       </div>
     </div>
   </section>
   <section>
     <div class=" container max-w-6xl space-y-4">
-      <div class="bg-site-dark-700/20 h-[500px]">
+      <!-- <div class="bg-site-dark-700/20 h-[500px]">
         <Map />
-      </div>
-      <Chart {data} chartType="bar" />
+      </div> -->
+      <!-- <Chart {data} chartType="bar" /> -->
     </div>
   </section>
   <section class="bg-site-dark-700 text-site-light text-center py-20">
-    <h3 class="text-opacity-60 text-sm mb-2">states won</h3>
-    <ul class="flex items-center justify-center gap-8 text-center">
-      {#each labels as label, count}
-        <li>
-          <p class="text-3xl">{count}</p>
-          <h2 class="font-medium text-lg">{label}</h2>
-        </li>
-      {/each}
-    </ul>
+    <!-- <StatesWon /> -->
   </section>
   <section class="container max-w-6xl space-y-2">
     <div class="grid grid-cols-4 items-center gap-4">
@@ -229,17 +165,17 @@
         </p>
       </div>
       <div class="col-span-3">
-        <Chart {data} chartType="bar" />
+        <!-- <Chart {data} chartType="bar" /> -->
       </div>
     </div>
   </section>
   <section class="container max-w-6xl space-y-14">
     <div class="grid grid-cols-3 gap-4 items-center">
       <div>
-        <Chart {data} chartType="doughnut" />
+        <!-- <Chart {data} chartType="doughnut" /> -->
       </div>
       <div>
-        <Chart {data} chartType="polarArea" />
+        <!-- <Chart {data} chartType="polarArea" /> -->
       </div>
       <div class="text-center">
         <h3 class="text-opacity-60 text-2xl font-semibold mb-2">Non-voters</h3>
@@ -264,10 +200,10 @@
         </p>
       </div>
       <div>
-        <Chart {data} chartType="doughnut" />
+        <!-- <Chart {data} chartType="doughnut" /> -->
       </div>
       <div>
-        <Chart {data} chartType="polarArea" />
+        <!-- <Chart {data} chartType="polarArea" /> -->
       </div>
     </div>
   </section>
@@ -283,19 +219,11 @@
         </p>
       </div>
       <div class="col-span-3">
-        <h3 class="text-opacity-60 text-sm mb-2">heat map of cancellations</h3>
+        <!-- <h3 class="text-opacity-60 text-sm mb-2">heat map of cancellations</h3>
         <div class="bg-site-dark-700/20 h-[400px]">
           <HeatMap />
-        </div>
+        </div> -->
       </div>
-    </div>
-  </section>
-  <section class="container max-w-6xl">
-    <h3 class="text-opacity-60 text-sm mb-2">Charts</h3>
-    <div class="grid grid-cols-3 gap-4">
-      <Chart {data} chartType="bar" />
-      <Chart {data} chartType="doughnut" />
-      <Chart {data} chartType="polarArea" />
     </div>
   </section>
 </main>
