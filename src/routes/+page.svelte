@@ -1,7 +1,7 @@
 <script>
   import Chart from "$lib/components/Chart.svelte";
-  import Map from "$lib/components/Map.svelte";
-  import HeatMap from "$lib/components/HeatMap.svelte";
+  import Map from "$lib/components/Maps/Map.svelte";
+  // import HeatMap from "$lib/components/Maps/HeatMap.svelte";
 
   let candidates = [
     { name: "lorem", party: "apc" },
@@ -142,10 +142,10 @@
   </section>
   <section>
     <div class=" container max-w-6xl space-y-4">
-      <!-- <div class="bg-site-dark-700/20 h-[500px]">
-        <Map />
-      </div> -->
-      <!-- <Chart {data} chartType="bar" /> -->
+      <div class="bg-site-dark-700/20 h-[500px]">
+        <Map {data} />
+      </div>
+      <Chart {data} chartType="bar" />
     </div>
   </section>
   <section class="bg-site-dark-700 text-site-light text-center py-20">

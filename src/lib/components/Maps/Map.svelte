@@ -4,6 +4,9 @@
 
   import geoJSON from "$lib/localGovernments";
 
+  export let data;
+  export let isAlternate;
+
   let mapElement;
   let map;
   let geoJSONMap;
@@ -47,12 +50,6 @@
 
       map = leaflet.map(mapElement).setView(location, 6);
 
-      // leaflet
-      //   .tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      //     attribution:
-      //       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      //   })
-      //   .addTo(map);
       geoJSONMap = leaflet
         .geoJSON(geoJSON, {
           onEachFeature: onEachFeature,
@@ -61,7 +58,7 @@
               // fillColor: getColor(feature.properties.density),
               weight: 2,
               opacity: 1,
-              color: "white",
+              color: isAlternate ? "blue" : "white",
               dashArray: "3",
             };
           },
@@ -70,12 +67,6 @@
           return "hello";
         })
         .addTo(map);
-
-      //     leaflet
-      //       .marker(location)
-      //       .addTo(map)
-      //       .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
-      //       .openPopup();
 
       info = leaflet.control();
 
@@ -86,7 +77,7 @@
           "p-4",
           "text-default",
           "rounded-md"
-        ); // create a div with a class "info"
+        );
         this.update();
         return this._div;
       };

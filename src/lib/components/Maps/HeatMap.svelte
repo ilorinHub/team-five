@@ -4,6 +4,8 @@
 
   import HeatmapOverlay from "leaflet-heatmap";
 
+  export let data;
+
   let mapElement;
   let map;
 

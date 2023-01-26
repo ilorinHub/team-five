@@ -5,6 +5,8 @@
   var myChartPointer;
   var ctxPointer;
 
+  export let isAlternate;
+
   export let data;
   $: {
     // if (myChart) {
@@ -21,7 +23,7 @@
     options: {
       scales: {
         y: {
-          beginAtZero: true,
+          // beginAtZero: true,
         },
       },
     },
