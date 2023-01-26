@@ -1,6 +1,7 @@
 <script>
   import Chart from "$lib/components/Chart.svelte";
   import Map from "$lib/components/Map.svelte";
+  import HeatMap from "$lib/components/HeatMap.svelte";
 
   let candidates = [
     { name: "lorem", party: "apc" },
@@ -283,7 +284,9 @@
       </div>
       <div class="col-span-3">
         <h3 class="text-opacity-60 text-sm mb-2">heat map of cancellations</h3>
-        <div class="bg-site-dark-700 h-[400px] col-span-2" />
+        <div class="bg-site-dark-700/20 h-[400px]">
+          <HeatMap />
+        </div>
       </div>
     </div>
   </section>
