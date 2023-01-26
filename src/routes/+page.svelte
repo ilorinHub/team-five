@@ -1,5 +1,6 @@
 <script>
   import Chart from "$lib/components/Chart.svelte";
+  import Map from "$lib/components/Map.svelte";
 
   let candidates = [
     { name: "lorem", party: "apc" },
@@ -194,9 +195,13 @@
       </div>
     </div>
   </section>
-  <section class="container max-w-6xl space-y-4">
-    <div class="bg-site-dark-700 h-[500px] col-span-2" />
-    <Chart {data} chartType="bar" />
+  <section>
+    <div class=" container max-w-6xl space-y-4">
+      <div class="bg-site-dark-700/20 h-[500px]">
+        <Map />
+      </div>
+      <Chart {data} chartType="bar" />
+    </div>
   </section>
   <section class="bg-site-dark-700 text-site-light text-center py-20">
     <h3 class="text-opacity-60 text-sm mb-2">states won</h3>

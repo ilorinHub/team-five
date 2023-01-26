@@ -15,3 +15,7 @@
     @apply text-site-dark-700 dark:text-site-light transition-default;
   }
 }
+
+.leaflet-container {
+  background: transparent !important;
+}
