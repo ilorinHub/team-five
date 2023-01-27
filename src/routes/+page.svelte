@@ -9,9 +9,29 @@
   import StatesWon from "$lib/components/StatesWon.svelte";
 
   export let data: PageData;
+  $: {
+    data.electionData.results.sort((a, b) => a.votes - b.votes);
+  }
+
+  setInterval(() => {
+    let results = [];
+    if (data.electionData.results) {
+      data.electionData.results.map(
+        (result) =>
+          (results = [
+            ...results,
+            { ...result, votes: result.votes + Math.random() * 40 },
+          ])
+      );
+      data.electionData = { ...data.electionData, results: results };
+    }
+  }, 200);
 </script>
 
 <main class="space-y-20">
+  {#each data.electionData.results as result}
+    {result.votes},
+  {/each}
   <section class="container max-w-6xl drop-shadow-md">
     <div class="py-8">
       <h2 class="text-2xl">Nigerian</h2>
