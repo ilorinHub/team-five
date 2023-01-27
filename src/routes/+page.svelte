@@ -1,122 +1,14 @@
-<script>
+<script lang="ts">
   import Chart from "$lib/components/Chart.svelte";
   import Map from "$lib/components/Maps/Map.svelte";
-  // import HeatMap from "$lib/components/Maps/HeatMap.svelte";
+  import HeatMap from "$lib/components/Maps/HeatMap.svelte";
 
-  let candidates = [
-    { name: "lorem", party: "apc" },
-    { name: "ipsum", party: "pdp" },
-    { name: "dolor", party: "aac" },
-    { name: "sit amit", party: "cvv" },
-  ];
+  import type { PageData } from "./$types";
+  import TopContenders from "$lib/components/TopContenders.svelte";
+  import LeaderBoard from "$lib/components/LeaderBoard.svelte";
+  import StatesWon from "$lib/components/StatesWon.svelte";
 
-  let dataset = {
-    election: "presidential",
-    results: [
-      { party: "apc", votes: 300 },
-      { party: "pdp", votes: 320 },
-      { party: "aac", votes: 303 },
-      { party: "cvv", votes: 350 },
-    ],
-    registeredVoters: 123412,
-    accreditedVoters: 3412,
-    validVoters: 1312,
-    states_results: [
-      {
-        title: "state1",
-        results: [
-          { party: "apc", votes: 300 },
-          { party: "pdp", votes: 320 },
-          { party: "aac", votes: 303 },
-          { party: "cvv", votes: 350 },
-        ],
-      },
-      {
-        title: "state2",
-        results: [
-          { party: "apc", votes: 300 },
-          { party: "pdp", votes: 320 },
-          { party: "aac", votes: 303 },
-          { party: "cvv", votes: 350 },
-        ],
-      },
-    ],
-  };
-  $: data = {
-    labels: extractParties(dataset),
-    datasets: [
-      {
-        data: extractPartiesVotes(dataset),
-      },
-    ],
-  };
-  $: {
-    dataset = {
-      ...dataset,
-      results: dataset.results.sort((a, b) => a.votes - b.votes),
-    };
-  }
-
-  setInterval(() => {
-    let results = [];
-    dataset.results.map(
-      (result) =>
-        (results = [
-          ...results,
-          { ...result, votes: result.votes + Math.random() * 40 },
-        ])
-    );
-    dataset = { ...dataset, results: results };
-  }, 200);
-
-  function extractParties(dataset) {
-    let parties = [];
-    dataset.results.forEach((result) => {
-      parties = [...parties, result.party];
-    });
-    return parties;
-  }
-  function extractPartiesVotes(dataset) {
-    let votes = [];
-    dataset.results.forEach((result) => {
-      votes = [...votes, result.votes];
-    });
-    return votes;
-  }
-  function extractStatesWinner(state) {
-    let winner = null;
-    let maxStateScore;
-
-    state.results.map((item) => {
-      if (item.score > maxStateScore) {
-        maxStateScore = item.score;
-
-        winner = item.party;
-      }
-    });
-  }
-  function extractStatesWon(states) {
-    let wins = 0;
-    return states.forEach((state) => {
-      wins = extractStatesWinner();
-    });
-  }
-  function getPartyCandidate(party) {
-    let candidate = candidates.find((candidate) => candidate.party == party);
-    return candidate;
-  }
-
-  const labels = ["apc", "pdp", "aac", "apga", "ac", "cpc", "ap"];
-  // const data = {
-  //   labels: labels,
-  //   datasets: [
-  //     {
-  //       label: "My First Dataset",
-  //       data: [65, 59, 80, 81, 56, 55, 40],
-  //       borderWidth: 1,
-  //     },
-  //   ],
-  // };
+  export let data: PageData;
 </script>
 
 <main class="space-y-20">
@@ -131,29 +23,29 @@
         <div class="bg-site-primary h-1" style:width="50%" />
       </div>
     </div>
-    <div class="grid grid-cols-3 gap-8 items-center">
+    <div class="grid grid-cols-3 gap-8">
       <div class="col-span-2 space-y-4">
-        <!-- <TopContenders /> -->
+        <TopContenders data={data.electionData} />
       </div>
       <div>
-        <!-- <LeaderBoard /> -->
+        <LeaderBoard data={data.electionData} />
       </div>
     </div>
   </section>
   <section>
     <div class=" container max-w-6xl space-y-4">
       <div class="bg-site-dark-700/20 h-[500px]">
-        <Map {data} />
+        <Map data={data.electionData} />
       </div>
-      <Chart {data} chartType="bar" />
+      <!-- <Chart data={data.electionData} chartType="bar" /> -->
     </div>
   </section>
-  <section class="bg-site-dark-700 text-site-light text-center py-20">
-    <!-- <StatesWon /> -->
+  <section class="bg-site-dark-700 text-site-light py-20">
+    <StatesWon data={data.electionData} />
   </section>
   <section class="container max-w-6xl space-y-2">
-    <div class="grid grid-cols-4 items-center gap-4">
-      <div class="text-center max-w-lg container">
+    <div class="grid grid-cols-4 gap-4">
+      <div class="max-w-lg container">
         <h3 class="text-opacity-60 text-2xl font-semibold mb-2">
           Most influencial states
         </h3>
@@ -165,19 +57,19 @@
         </p>
       </div>
       <div class="col-span-3">
-        <!-- <Chart {data} chartType="bar" /> -->
+        <Chart data={data.electionData} chartType="bar" />
       </div>
     </div>
   </section>
   <section class="container max-w-6xl space-y-14">
-    <div class="grid grid-cols-3 gap-4 items-center">
+    <div class="grid grid-cols-3 gap-4">
       <div>
-        <!-- <Chart {data} chartType="doughnut" /> -->
+        <Chart data={data.electionData} chartType="doughnut" />
       </div>
       <div>
-        <!-- <Chart {data} chartType="polarArea" /> -->
+        <Chart data={data.electionData} chartType="polarArea" />
       </div>
-      <div class="text-center">
+      <div>
         <h3 class="text-opacity-60 text-2xl font-semibold mb-2">Non-voters</h3>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor
@@ -187,8 +79,8 @@
         </p>
       </div>
     </div>
-    <div class="grid grid-cols-3 gap-4 items-center">
-      <div class="text-center">
+    <div class="grid grid-cols-3 gap-4">
+      <div>
         <h3 class="text-opacity-60 text-2xl font-semibold mb-2">
           Invalidated votes
         </h3>
@@ -200,10 +92,10 @@
         </p>
       </div>
       <div>
-        <!-- <Chart {data} chartType="doughnut" /> -->
+        <Chart data={data.electionData} chartType="doughnut" />
       </div>
       <div>
-        <!-- <Chart {data} chartType="polarArea" /> -->
+        <Chart data={data.electionData} chartType="polarArea" />
       </div>
     </div>
   </section>
@@ -219,10 +111,10 @@
         </p>
       </div>
       <div class="col-span-3">
-        <!-- <h3 class="text-opacity-60 text-sm mb-2">heat map of cancellations</h3>
+        <h3 class="text-opacity-60 text-sm mb-2">heat map of cancellations</h3>
         <div class="bg-site-dark-700/20 h-[400px]">
           <HeatMap />
-        </div> -->
+        </div>
       </div>
     </div>
   </section>
