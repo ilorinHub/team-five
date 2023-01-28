@@ -13,6 +13,7 @@
   import Tables from "views/admin/Tables.svelte";
   import Maps from "views/admin/Maps.svelte";
   import UploadReport from "views/results/uploadReport.svelte";
+  import IncidenceReport from "../views/incidences/IncidenceReport.svelte";
 
   export let location;
   export let admin = "";
@@ -27,6 +28,7 @@
       <Router url="admin">
         <Route path="dashboard" component={Dashboard} />
         <Route path="results/upload" component={UploadReport} />
+        <Route path="incidences/upload" component={IncidenceReport} />
         <Route path="settings" component={Settings} />
         <Route path="tables" component={Tables} />
         <Route path="maps" component={Maps} />
