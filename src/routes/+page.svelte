@@ -29,9 +29,6 @@
 </script>
 
 <main class="space-y-20">
-  {#each data.electionData.results as result}
-    {result.votes},
-  {/each}
   <section class="container max-w-6xl drop-shadow-md">
     <div class="py-8">
       <h2 class="text-2xl">Nigerian</h2>
