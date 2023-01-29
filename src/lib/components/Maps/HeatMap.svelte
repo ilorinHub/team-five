@@ -1,7 +1,7 @@
 <script>
   import { onMount, onDestroy } from "svelte";
   import { browser } from "$app/environment";
-  import HeatmapOverlay from "leaflet-heatmap";
+  // import HeatmapOverlay from "leaflet-heatmap";
 
   export let data;
   import citiesData from "$lib/citiesData";
@@ -18,7 +18,7 @@
   onMount(async () => {
     if (browser) {
       const leaflet = await import("leaflet");
-      const HeatmapOverlay = await import("leaflet-heatmap");
+      // const HeatmapOverlay = await import("leaflet-heatmap");
 
       var testData = {
         max: 8,
@@ -55,15 +55,15 @@
         valueField: "count",
       };
 
-      heatmapLayer = new HeatmapOverlay(cfg);
+      // heatmapLayer = new HeatmapOverlay(cfg);
 
       map = leaflet.map(mapElement, {
-        layers: [baseLayer, heatmapLayer],
+        layers: [baseLayer],
         center: new leaflet.LatLng(25.6586, -80.3568),
         zoom: 4,
       });
 
-      heatmapLayer.setData(testData);
+      // heatmapLayer.setData(testData);
     }
   });
 
