@@ -10,17 +10,37 @@ export const load = (({ params }) => {
       conclusion: null,
 
       candidates: [
-        { name: "lorem", party: "apc" },
-        { name: "ipsum", party: "pdp" },
-        { name: "dolor", party: "aac" },
-        { name: "sit amit", party: "cvv" },
+        {
+          name: "Muktar Abdulfatai",
+          party: "aad",
+          image:
+            "https://lh3.google.com/u/0/d/1TnABgq7Oommgab11qDTSHwUb6bkXHEhc=w1366-h695-iv1",
+        },
+        {
+          name: "Kamol Oduola",
+          party: "fcc",
+          image:
+            "https://lh3.google.com/u/0/d/11IumsshJg5iGV0zaMZ5GXf7tTRFPoXv-=w1366-h695-iv1",
+        },
+        {
+          name: "Abdrasheed Taiwo",
+          party: "rad",
+          image:
+            "https://lh3.google.com/u/0/d/1v5ma7sLEZmMq9jewbilXIVPbiwC8X8p-=w1366-h695-iv1",
+        },
+        {
+          name: "Happy Adaga",
+          party: "tig",
+          image:
+            "https://lh3.google.com/u/0/d/1CO_LhLQXZpyHRXs5d2VBZY-SajNZf2Lv=w1366-h695-iv1",
+        },
       ],
 
       results: [
-        { party: "apc", votes: 300 },
-        { party: "pdp", votes: 320 },
-        { party: "aac", votes: 303 },
-        { party: "cvv", votes: 350 },
+        { party: "aad", votes: 300 },
+        { party: "fcc", votes: 320 },
+        { party: "rad", votes: 303 },
+        { party: "tig", votes: 350 },
       ],
 
       registeredVoters: 123412,
@@ -29,21 +49,21 @@ export const load = (({ params }) => {
 
       states_results: [
         {
-          title: "state1",
+          title: "kwara",
           results: [
-            { party: "apc", votes: 300 },
-            { party: "pdp", votes: 320 },
-            { party: "aac", votes: 303 },
-            { party: "cvv", votes: 350 },
+            { party: "aad", votes: 300 },
+            { party: "fcc", votes: 320 },
+            { party: "rad", votes: 303 },
+            { party: "tig", votes: 350 },
           ],
         },
         {
-          title: "state2",
+          title: "niger",
           results: [
-            { party: "apc", votes: 300 },
-            { party: "pdp", votes: 320 },
-            { party: "aac", votes: 303 },
-            { party: "cvv", votes: 350 },
+            { party: "aad", votes: 300 },
+            { party: "fcc", votes: 320 },
+            { party: "rad", votes: 303 },
+            { party: "tig", votes: 350 },
           ],
         },
       ],

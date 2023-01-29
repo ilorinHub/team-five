@@ -30,14 +30,17 @@
 </script>
 
 <main class="space-y-20">
-  <SocialSharing url="https://www.google.com" title="some title" />
+  <SocialSharing
+    url="elect-viz.vercel.app"
+    title={data.electionData.election}
+  />
   <section class="container max-w-6xl drop-shadow-md">
     <div class="py-8">
       <h2 class="text-2xl">Nigerian</h2>
-      <h3 class="text-opacity-60 text-5xl">
-        <span class="font-medium">Presidential</span> Election
+      <h3 class="text-opacity-60 text-5xl capitalize">
+        <span class="font-medium">{data.electionData.election}</span> Election
       </h3>
-      <p class="text-2xl font-semibold">2022</p>
+      <p class="text-2xl font-semibold">{data.electionData.year}</p>
       <div class="max-w-[200px] bg-site-primary/30">
         <div class="bg-site-primary h-1" style:width="50%" />
       </div>
