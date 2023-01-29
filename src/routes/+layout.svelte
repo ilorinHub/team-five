@@ -38,7 +38,7 @@
             class="p-2 relative px-4 py-2 bg-site-dark-600 group"
             on:click={toggleIsResultSelectorOpen}
           >
-            <span class="text-site-light">
+            <span class="text-site-light uppercase">
               {resultSource}
               <span
                 class="w-6 h-6 bg-green-500 rounded-full inline-flex gap-2 justify-center items-center"
@@ -50,9 +50,8 @@
               class="absolute mt-2 right-0 shadow-md p-1 bg-site-light-600 text-site-dark"
               class:hidden={!isResultSelectorOpen}
             >
-              <p class="px-4 py-2">asa</p>
-              <p class="px-4 py-2">asaasdf</p>
-              <p class="px-4 py-2">asaasdfa</p>
+              <p class="px-4 py-2">some agent</p>
+              <p class="px-4 py-2">another agent</p>
             </div>
           </button>
           <button on:click={toggleIsMenuOpen}>Menu <span>&#9776;</span></button>

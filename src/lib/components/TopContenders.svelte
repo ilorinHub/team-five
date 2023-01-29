@@ -7,13 +7,20 @@
 <div class="space-y-2">
   <h3 class="text-opacity-60 text-sm mb-2">Top contenders</h3>
   <div class="grid grid-cols-2 gap-2">
-    <div class="w-full h-[300px] bg-slate-900">
+    <div class="w-full h-[300px] bg-slate-900 object-cover overflow-hidden p-1">
       <img
+        class="w-full"
         src={getPartyCandidate(data.results[0].party, data).image}
+        alt={getPartyCandidate(data.results[0].party, data)?.name}
+      />
+    </div>
+    <div class="w-full h-[300px] bg-slate-900 object-cover overflow-hidden p-1">
+      <img
+        class="w-full"
+        src={getPartyCandidate(data.results[1].party, data).image}
         alt={getPartyCandidate(data.results[1].party, data)?.name}
       />
     </div>
-    <div class="w-full h-[300px] bg-slate-900" />
   </div>
 </div>
 <div class="flex justify-between">

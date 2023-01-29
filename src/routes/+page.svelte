@@ -101,7 +101,7 @@
         </p>
       </div>
     </div>
-    <div class="grid grid-cols-3 gap-4">
+    <div class="grid grid-cols-3 gap-4 my-4">
       <div>
         <h3 class="text-opacity-60 text-2xl font-semibold mb-2">
           Invalidated votes

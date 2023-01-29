@@ -1,8 +1,10 @@
 <script>
   import { onMount, onDestroy } from "svelte";
   import { browser } from "$app/environment";
+  import HeatmapOverlay from "leaflet-heatmap";
 
   export let data;
+  import citiesData from "$lib/citiesData";
 
   let mapElement;
   let map;
@@ -53,15 +55,15 @@
         valueField: "count",
       };
 
-      // heatmapLayer = new HeatmapOverlay(cfg);
+      heatmapLayer = new HeatmapOverlay(cfg);
 
       map = leaflet.map(mapElement, {
-        layers: [baseLayer],
+        layers: [baseLayer, heatmapLayer],
         center: new leaflet.LatLng(25.6586, -80.3568),
         zoom: 4,
       });
 
-      // heatmapLayer.setData(testData);
+      heatmapLayer.setData(testData);
     }
   });
 

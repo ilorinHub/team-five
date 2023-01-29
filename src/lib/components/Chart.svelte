@@ -48,6 +48,7 @@
 
   export const config = {
     type: chartType,
+    label: "Data",
     data: dataset,
     options: {
       scales: {
